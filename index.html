@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="et">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Liiklusõnnetuste kaart</title>
+    <meta name="author" content="Martin Meitern" />
+    <meta name="description" content="Inimkannatanutega liiklusõnnetused Eestis 2011-2026 kaardil: kus, millal ja millistes oludes õnnetusi juhtub." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='12' fill='%23e8590c'/><circle cx='16' cy='16' r='5' fill='%237a0019'/></svg>" />
+  </head>
+  <body>
+    <a class="skip" href="#paneel">Liigu paneeli juurde</a>
+    <div class="app">
+      <aside id="paneel" class="panel" aria-label="Juhtpaneel">
+        <header class="panel-head">
+          <button id="sheet-toggle" class="sheet-handle" aria-expanded="false" aria-controls="panel-body">
+            <span class="sheet-grip" aria-hidden="true"></span>
+            <span class="visually-hidden">Ava või sulge paneel</span>
+          </button>
+          <div class="brand">
+            <h1>Liiklusõnnetuste kaart</h1>
+            <p class="summary" id="summary" aria-live="polite">Laadin andmeid...</p>
+          </div>
+          <nav class="tabs" role="tablist" aria-label="Vaated">
+            <button role="tab" id="tab-ylevaade" aria-controls="view-ylevaade" aria-selected="true">Ülevaade</button>
+            <button role="tab" id="tab-umbrus" aria-controls="view-umbrus" aria-selected="false" tabindex="-1">Minu ümbrus</button>
+            <button role="tab" id="tab-teekond" aria-controls="view-teekond" aria-selected="false" tabindex="-1">Minu teekond</button>
+            <button role="tab" id="tab-info" aria-controls="view-info" aria-selected="false" tabindex="-1">Info</button>
+          </nav>
+        </header>
+        <div id="panel-body" class="panel-body">
+          <div class="filter-box" id="filter-box">
+            <div class="filter-head" id="filter-head">
+              <button id="filter-toggle" class="filter-toggle" type="button" aria-expanded="false" aria-controls="view-filtrid">
+                <span class="filter-toggle-title">Filtrid</span>
+                <span class="filter-toggle-state" id="filter-state">Kõik õnnetused</span>
+              </button>
+              <button id="filter-reset" class="filter-reset" type="button" hidden>Lähtesta</button>
+              <span class="chevron" aria-hidden="true"></span>
+            </div>
+            <div id="view-filtrid" class="filter-body" hidden></div>
+          </div>
+          <section id="view-ylevaade" role="tabpanel" aria-labelledby="tab-ylevaade" class="view">
+            <p class="hint stats-page-link"><a id="stats-page-link" href="statistika.html" referrerpolicy="origin">Ava filtrid ja statistika eraldi lehel</a></p>
+            <div id="view-stat"></div>
+          </section>
+          <section id="view-umbrus" role="tabpanel" aria-labelledby="tab-umbrus" class="view" hidden></section>
+          <section id="view-teekond" role="tabpanel" aria-labelledby="tab-teekond" class="view" hidden></section>
+          <section id="view-info" role="tabpanel" aria-labelledby="tab-info" class="view" hidden></section>
+        </div>
+      </aside>
+      <main class="map-wrap">
+        <div id="map" role="region" aria-label="Õnnetuste kaart"></div>
+        <div class="map-tools" role="group" aria-label="Kaardi kiht">
+          <button id="layer-punktid" aria-pressed="true">Punktid</button>
+          <button id="layer-soojus" aria-pressed="false">Tihedus</button>
+          <label class="visually-hidden" for="basemap">Aluskaart</label>
+          <select id="basemap">
+            <option value="hallkaart">Hall kaart</option>
+            <option value="kaart">Värviline kaart</option>
+            <option value="foto">Aerofoto</option>
+          </select>
+          <a id="map-stats-link" class="map-tools-link" href="statistika.html" referrerpolicy="origin">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+            Statistika
+          </a>
+        </div>
+        <div class="legend" id="legend">
+          <span><i class="dot dot-fatal"></i>Hukkunuga</span>
+          <span><i class="dot dot-injury"></i>Vigastatuga</span>
+          <span><i class="dot dot-cluster"></i>Mitu õnnetust</span>
+          <span><i class="dot dot-approx"></i>Ligikaudne asukoht</span>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

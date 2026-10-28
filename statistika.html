@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="et" class="page-stats">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Liiklusõnnetuste statistika</title>
+    <meta name="author" content="Martin Meitern" />
+    <meta name="description" content="Inimkannatanutega liiklusõnnetused Eestis 2011-2026: vali filtrid ja vaata statistikat." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='12' fill='%23e8590c'/><circle cx='16' cy='16' r='5' fill='%237a0019'/></svg>" />
+  </head>
+  <body>
+    <a class="skip" href="#filtrid">Liigu filtrite juurde</a>
+    <header class="sp-head">
+      <div class="sp-head-inner">
+        <div class="brand">
+          <h1>Liiklusõnnetuste statistika</h1>
+          <p class="summary" id="summary" aria-live="polite">Laadin andmeid...</p>
+        </div>
+        <a class="btn sp-maplink" id="map-link" href="./">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg>
+          Ava kaart
+        </a>
+      </div>
+    </header>
+    <div class="sp-layout">
+      <aside class="sp-filters" aria-label="Filtrid">
+        <div class="filter-box">
+          <div class="filter-head" id="filter-head">
+            <button id="filter-toggle" class="filter-toggle" type="button" aria-expanded="true" aria-controls="filtrid">
+              <span class="filter-toggle-title">Filtrid</span>
+              <span class="filter-toggle-state" id="filter-state">Kõik õnnetused</span>
+            </button>
+            <button id="filter-reset" class="filter-reset" type="button" hidden>Lähtesta</button>
+            <span class="chevron" aria-hidden="true"></span>
+          </div>
+          <div id="filtrid" class="filter-body"></div>
+        </div>
+      </aside>
+      <main class="sp-main" aria-label="Statistika">
+        <div id="stat" class="stats-grid"></div>
+      </main>
+    </div>
+    <footer class="sp-foot">
+      Idee: <a href="https://www.linkedin.com/in/martin-meitern/" target="_blank" rel="noopener"><strong>Martin Meitern</strong></a> · Teostus: Claude · Andmed: Transpordiamet, Politsei- ja Piirivalveamet
+    </footer>
+    <script type="module" src="/src/statistika.ts"></script>
+  </body>
+</html>
